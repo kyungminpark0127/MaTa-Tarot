@@ -1,0 +1,346 @@
+        /* 스크롤바 숨기기 */
+        ::-webkit-scrollbar {
+          display: none;
+        }
+
+        html {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+        }
+
+        body {
+          font-family: 'Noto Sans KR', sans-serif;
+          background-color: #fdfaf5;
+          color: #333;
+          max-width: 900px;
+          margin: auto;
+          padding: 1em;
+          line-height: 1.6;
+        }
+
+        header, footer {
+          text-align: center;
+          margin: 2em 0;
+        }
+
+        h1, h2 {
+          color: #4a148c;
+        }
+
+        /* 기본 네비게이션 스타일 */
+        nav {
+          text-align: center;
+          margin: 1em 0;
+        }
+
+        nav a {
+          color: #6a1b9a;
+          text-decoration: none;
+          transition: color 0.3s ease;
+          margin: 0 0.5em;
+        }
+
+        nav a:hover {
+          color: #8e24aa;
+          text-decoration: underline;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 1em;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        table, th, td {
+          border: 1px solid #ccc;
+        }
+
+        th, td {
+          padding: 0.75em;
+          text-align: left;
+        }
+
+        th {
+          background-color: #f3e5f5;
+          font-weight: bold;
+          color: #4a148c;
+        }
+
+        tr:nth-child(even) {
+          background-color: #faf8fc;
+        }
+
+        section {
+          margin-bottom: 3em;
+        }
+
+        .intro-text {
+          background-color: #faf8fc;
+          padding: 1.5em;
+          border-radius: 8px;
+          border-left: 4px solid #6a1b9a;
+          margin: 1.5em 0;
+        }
+
+        .example-box {
+          background-color: #f3e5f5;
+          padding: 1em;
+          border-radius: 8px;
+          margin: 1em 0;
+        }
+
+        .number-list {
+          background-color: #faf8fc;
+          padding: 1em;
+          border-radius: 8px;
+          margin: 1em 0;
+        }
+
+        .number-list ul {
+          list-style-type: none;
+          padding-left: 0;
+        }
+
+        .number-list li {
+          margin: 0.5em 0;
+          padding: 0.3em 0;
+          border-bottom: 1px solid #e1bee7;
+        }
+
+        .number-list li:last-child {
+          border-bottom: none;
+        }
+
+        .reference-links {
+          background-color: #e8f5e8;
+          padding: 1em;
+          border-radius: 8px;
+          margin: 1em 0;
+        }
+
+        /* 큰 화면 (1200px 이상) */
+        @media (min-width: 1200px) {
+          body {
+            max-width: 1100px;
+            padding: 2em;
+          }
+          
+          h1 {
+            font-size: 2.5em;
+          }
+          
+          h2 {
+            font-size: 2em;
+          }
+          
+          th, td {
+            padding: 1em;
+          }
+          
+          nav a {
+            margin: 0 0.8em;
+            font-size: 1.1em;
+          }
+        }
+
+        /* 중간 화면 (992px ~ 1199px) */
+        @media (min-width: 992px) and (max-width: 1199px) {
+          body {
+            max-width: 950px;
+            padding: 1.5em;
+          }
+          
+          h1 {
+            font-size: 2.2em;
+          }
+          
+          nav a {
+            margin: 0 0.7em;
+          }
+        }
+
+        /* 태블릿 (768px ~ 991px) */
+        @media (min-width: 768px) and (max-width: 991px) {
+          body {
+            padding: 1.2em;
+          }
+          
+          nav {
+            margin-bottom: 1.5em;
+          }
+          
+          nav a {
+            margin: 0 0.6em;
+            font-size: 0.95em;
+          }
+          
+          th, td {
+            padding: 0.6em;
+            font-size: 0.95em;
+          }
+        }
+
+        /* 모바일 (768px 이하) */
+        @media (max-width: 768px) {
+          body {
+            padding: 1em;
+            font-size: 0.95em;
+          }
+
+          h1 {
+            font-size: 1.8em;
+            margin-bottom: 0.5em;
+          }
+          
+          h2 {
+            font-size: 1.4em;
+            margin-bottom: 1em;
+          }
+
+          header {
+            margin: 1.5em 0;
+          }
+          
+          header p {
+            font-size: 0.9em;
+            margin-bottom: 1em;
+          }
+
+          /* 모바일에서 네비게이션을 버튼 형태로 변경 */
+          nav {
+            margin-bottom: 1.5em;
+          }
+
+          /* 구분자 숨기기 */
+          nav {
+            font-size: 0;
+          }
+
+          nav a {
+            display: inline-block;
+            margin: 0.4em 0.2em;
+            padding: 1.2em 1.8em;
+            background-color: #f3e5f5;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            color: #4a148c;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            min-width: 130px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          }
+          
+          nav a:hover {
+            background-color: #e1bee7;
+            color: #4a148c;
+            text-decoration: none;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+          }
+
+          /* 테이블을 카드 형태로 변환 */
+          table, thead, tbody, th, td, tr {
+            display: block;
+            width: 100%;
+          }
+
+          table {
+            box-shadow: none;
+          }
+
+          table thead {
+            display: none;
+          }
+
+          table tr {
+            margin-bottom: 1.5em;
+            border: 2px solid #e1bee7;
+            border-radius: 12px;
+            padding: 1em;
+            background-color: #faf8fc;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+          }
+
+          table td {
+            border: none;
+            text-align: left;
+            padding: 0.5em 0;
+            position: relative;
+            padding-left: 0;
+            word-wrap: break-word;
+          }
+
+          table td:first-child {
+            font-weight: bold;
+            color: #4a148c;
+            font-size: 1.1em;
+            margin-bottom: 0.3em;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid #e1bee7;
+          }
+
+          table td:last-child {
+            color: #555;
+            line-height: 1.5;
+            padding-top: 0.3em;
+          }
+
+          section {
+            margin-bottom: 2em;
+          }
+          
+          footer {
+            margin-top: 2em;
+            font-size: 0.9em;
+          }
+        }
+
+        /* 매우 작은 모바일 (480px 이하) */
+        @media (max-width: 480px) {
+          body {
+            padding: 0.8em;
+            font-size: 0.9em;
+          }
+          
+          h1 {
+            font-size: 1.6em;
+          }
+          
+          h2 {
+            font-size: 1.3em;
+          }
+          
+          nav a {
+            margin: 0.3em 0.15em;
+            padding: 1em 1.5em;
+            font-size: 1rem;
+            min-width: 110px;
+          }
+          
+          table tr {
+            padding: 0.8em;
+            margin-bottom: 1.2em;
+          }
+          
+          table td {
+            padding-left: 0;
+            word-wrap: break-word;
+          }
+          
+          table td:first-child {
+            width: 45%;
+          }
+        }
+
+        /* 가로 모드 모바일 */
+        @media (max-width: 768px) and (orientation: landscape) {
+          nav a {
+            margin: 0.25em 0.1em;
+            padding: 0.8em 1.2em;
+            font-size: 0.95rem;
+            min-width: 100px;
+          }
+        }

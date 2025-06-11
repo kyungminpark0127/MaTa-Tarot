@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>타로카드 기초 가이드</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 스크롤바 숨기기 */
+        ::-webkit-scrollbar {
+          display: none;
+        }
+
+        html {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+        }
+
+        body {
+          font-family: 'Noto Sans KR', sans-serif;
+          background-color: #fdfaf5;
+          color: #333;
+          max-width: 900px;
+          margin: auto;
+          padding: 1em;
+          line-height: 1.6;
+        }
+
+        header, footer {
+          text-align: center;
+          margin: 2em 0;
+        }
+
+        h1, h2 {
+          color: #4a148c;
+        }
+
+        /* 기본 네비게이션 스타일 */
+        nav {
+          text-align: center;
+          margin: 1em 0;
+        }
+
+        nav a {
+          color: #6a1b9a;
+          text-decoration: none;
+          transition: color 0.3s ease;
+          margin: 0 0.5em;
+        }
+
+        nav a:hover {
+          color: #8e24aa;
+          text-decoration: underline;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 1em;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        table, th, td {
+          border: 1px solid #ccc;
+        }
+
+        th, td {
+          padding: 0.75em;
+          text-align: left;
+        }
+
+        th {
+          background-color: #f3e5f5;
+          font-weight: bold;
+          color: #4a148c;
+        }
+
+        tr:nth-child(even) {
+          background-color: #faf8fc;
+        }
+
+        section {
+          margin-bottom: 3em;
+        }
+
+        .intro-text {
+          background-color: #faf8fc;
+          padding: 1.5em;
+          border-radius: 8px;
+          border-left: 4px solid #6a1b9a;
+          margin: 1.5em 0;
+        }
+
+        .example-box {
+          background-color: #f3e5f5;
+          padding: 1em;
+          border-radius: 8px;
+          margin: 1em 0;
+        }
+
+        .number-list {
+          background-color: #faf8fc;
+          padding: 1em;
+          border-radius: 8px;
+          margin: 1em 0;
+        }
+
+        .number-list ul {
+          list-style-type: none;
+          padding-left: 0;
+        }
+
+        .number-list li {
+          margin: 0.5em 0;
+          padding: 0.3em 0;
+          border-bottom: 1px solid #e1bee7;
+        }
+
+        .number-list li:last-child {
+          border-bottom: none;
+        }
+
+        .reference-links {
+          background-color: #e8f5e8;
+          padding: 1em;
+          border-radius: 8px;
+          margin: 1em 0;
+        }
+
+        /* 큰 화면 (1200px 이상) */
+        @media (min-width: 1200px) {
+          body {
+            max-width: 1100px;
+            padding: 2em;
+          }
+          
+          h1 {
+            font-size: 2.5em;
+          }
+          
+          h2 {
+            font-size: 2em;
+          }
+          
+          th, td {
+            padding: 1em;
+          }
+          
+          nav a {
+            margin: 0 0.8em;
+            font-size: 1.1em;
+          }
+        }
+
+        /* 중간 화면 (992px ~ 1199px) */
+        @media (min-width: 992px) and (max-width: 1199px) {
+          body {
+            max-width: 950px;
+            padding: 1.5em;
+          }
+          
+          h1 {
+            font-size: 2.2em;
+          }
+          
+          nav a {
+            margin: 0 0.7em;
+          }
+        }
+
+        /* 태블릿 (768px ~ 991px) */
+        @media (min-width: 768px) and (max-width: 991px) {
+          body {
+            padding: 1.2em;
+          }
+          
+          nav {
+            margin-bottom: 1.5em;
+          }
+          
+          nav a {
+            margin: 0 0.6em;
+            font-size: 0.95em;
+          }
+          
+          th, td {
+            padding: 0.6em;
+            font-size: 0.95em;
+          }
+        }
+
+        /* 모바일 (768px 이하) */
+        @media (max-width: 768px) {
+          body {
+            padding: 1em;
+            font-size: 0.95em;
+          }
+
+          h1 {
+            font-size: 1.8em;
+            margin-bottom: 0.5em;
+          }
+          
+          h2 {
+            font-size: 1.4em;
+            margin-bottom: 1em;
+          }
+
+          header {
+            margin: 1.5em 0;
+          }
+          
+          header p {
+            font-size: 0.9em;
+            margin-bottom: 1em;
+          }
+
+          /* 모바일에서 네비게이션을 버튼 형태로 변경 */
+          nav {
+            margin-bottom: 1.5em;
+          }
+
+          /* 구분자 숨기기 */
+          nav {
+            font-size: 0;
+          }
+
+          nav a {
+            display: inline-block;
+            margin: 0.4em 0.2em;
+            padding: 1.2em 1.8em;
+            background-color: #f3e5f5;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            color: #4a148c;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            min-width: 130px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          }
+          
+          nav a:hover {
+            background-color: #e1bee7;
+            color: #4a148c;
+            text-decoration: none;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+          }
+
+          /* 테이블을 카드 형태로 변환 */
+          table, thead, tbody, th, td, tr {
+            display: block;
+            width: 100%;
+          }
+
+          table {
+            box-shadow: none;
+          }
+
+          table thead {
+            display: none;
+          }
+
+          table tr {
+            margin-bottom: 1.5em;
+            border: 2px solid #e1bee7;
+            border-radius: 12px;
+            padding: 1em;
+            background-color: #faf8fc;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+          }
+
+          table td {
+            border: none;
+            text-align: left;
+            padding: 0.5em 0;
+            position: relative;
+            padding-left: 0;
+            word-wrap: break-word;
+          }
+
+          table td:first-child {
+            font-weight: bold;
+            color: #4a148c;
+            font-size: 1.1em;
+            margin-bottom: 0.3em;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid #e1bee7;
+          }
+
+          table td:last-child {
+            color: #555;
+            line-height: 1.5;
+            padding-top: 0.3em;
+          }
+
+          section {
+            margin-bottom: 2em;
+          }
+          
+          footer {
+            margin-top: 2em;
+            font-size: 0.9em;
+          }
+        }
+
+        /* 매우 작은 모바일 (480px 이하) */
+        @media (max-width: 480px) {
+          body {
+            padding: 0.8em;
+            font-size: 0.9em;
+          }
+          
+          h1 {
+            font-size: 1.6em;
+          }
+          
+          h2 {
+            font-size: 1.3em;
+          }
+          
+          nav a {
+            margin: 0.3em 0.15em;
+            padding: 1em 1.5em;
+            font-size: 1rem;
+            min-width: 110px;
+          }
+          
+          table tr {
+            padding: 0.8em;
+            margin-bottom: 1.2em;
+          }
+          
+          table td {
+            padding-left: 0;
+            word-wrap: break-word;
+          }
+          
+          table td:first-child {
+            width: 45%;
+          }
+        }
+
+        /* 가로 모드 모바일 */
+        @media (max-width: 768px) and (orientation: landscape) {
+          nav a {
+            margin: 0.25em 0.1em;
+            padding: 0.8em 1.2em;
+            font-size: 0.95rem;
+            min-width: 100px;
+          }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>타로카드 기초 가이드</h1>
+        <p>타로카드의 기본 개념부터 색상과 상징의 의미까지 체계적으로 학습해보세요</p>
+    </header>
+
+    <nav>
+        <a href="index.html">홈</a>
+        <a href="#basics">기초 개념</a>
+        <a href="#image-reading">이미지 리딩</a>
+        <a href="#numerology">수비학</a>
+        <a href="#colors">색상 의미</a>
+        <a href="#symbols">상징 요소</a>
+    </nav>
+
+    <section id="basics">
+        <h2>1. 타로카드 기초 개념</h2>
+        
+        <div class="intro-text">
+            <strong>방향성과 해석:</strong> 타로카드에서는 정방향과 역방향이 무조건 좋은 의미와 나쁜 의미로 나뉘지 않습니다. 방향에 따라 포괄적인 해석이 이루어지며, 완전한 부정의 카드라는 개념은 거의 없습니다. 따라서 각 카드의 의미를 보다 깊이 이해하고, 다양한 상황에 적용하는 것이 중요합니다.
+        </div>
+
+        <p>타로카드는 <strong>0-21의 메이저 아르카나</strong>와 <strong>1-10의 마이너 아르카나</strong>로 이루어져 있으며, 각 카드는 고유한 상징적 의미를 지닙니다.</p>
+    </section>
+
+    <section id="image-reading">
+        <h2>2. 타로 이미지 리딩</h2>
+        
+        <p>타로카드의 해석에서 중요한 부분 중 하나는 <strong>이미지 리딩</strong>입니다. 각 카드에는 다양한 <strong>상징 요소</strong>가 있으며, 이를 통해 보다 직관적인 해석이 가능합니다.</p>
+
+        <div class="example-box">
+            <h3>예시: 마법사(The Magician) 카드</h3>
+            <ul>
+                <li><strong>손에 들고 있는 막대기:</strong> 의지와 창조력</li>
+                <li><strong>머리 위 무한대(∞) 기호:</strong> 무한한 가능성과 지혜</li>
+                <li><strong>탁자 위 네 가지 요소:</strong> 펜타클, 컵, 완드, 소드로 네 가지 원소(흙, 물, 불, 공기)를 상징하며, 조화로운 균형을 의미</li>
+            </ul>
+            <p><em>이러한 요소를 조합하여, 마법사 카드는 창조, 의지, 능력, 자원의 활용과 같은 의미로 해석됩니다.</em></p>
+        </div>
+
+        <div class="example-box">
+            <h3>예시: 펜타클 5(Five of Pentacles)</h3>
+            <p><strong>이미지 설명:</strong> 추운 겨울날, 다리를 다친 소년이 앞사람을 따라가고 있으며, 둘 다 가난해 보이는 모습</p>
+            <p><strong>해석:</strong></p>
+            <ul>
+                <li>소년 → 카드를 뽑은 주체(내담자)</li>
+                <li>내담자는 무언가를 간절히 따라가고 있으나, 정작 그것은 부정적인 길로 이어질 가능성이 있음</li>
+                <li>도움을 요청하거나 새로운 시각을 가질 필요가 있음</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="numerology">
+        <h2>3. 수비학과 타로</h2>
+        
+        <p><strong>수비학(Numerology)</strong>은 숫자의 의미를 통해 타로카드를 해석하는 기법입니다. 수비학을 활용하면 숫자가 가진 본질적인 의미를 바탕으로 카드 해석을 보다 논리적으로 접근할 수 있습니다.</p>
+
+        <div class="number-list">
+            <h3>숫자의 기본 의미</h3>
+            <ul>
+                <li><strong>1:</strong> 시작, 창조, 독립</li>
+                <li><strong>2:</strong> 균형, 조화, 협력</li>
+                <li><strong>3:</strong> 성장, 확장, 창의성</li>
+                <li><strong>4:</strong> 안정, 구조, 기반</li>
+                <li><strong>5:</strong> 변화, 도전, 갈등</li>
+                <li><strong>6:</strong> 조화, 사랑, 책임</li>
+                <li><strong>7:</strong> 탐구, 신비, 영적 성장</li>
+                <li><strong>8:</strong> 힘, 권위, 물질적 성공</li>
+                <li><strong>9:</strong> 완성, 성숙, 지혜</li>
+                <li><strong>10:</strong> 새로운 시작, 주기 완성</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="colors">
+        <h2>4. 타로카드 색상의 의미</h2>
+        
+        <p>타로 카드에서 색상은 각 카드의 상징성과 의미를 해석하는 데 중요한 요소입니다. 색상의 의미는 문화적 배경이나 문맥에 따라 다르게 해석될 수 있으므로, 타로 카드 해석 시 이러한 점을 고려하는 것이 매우 중요합니다.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>색상</th>
+                    <th>의미</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="색상">흰색</td>
+                    <td data-label="의미">순수함, 신성함, 새로운 시작, 완성, 치유</td>
+                </tr>
+                <tr>
+                    <td data-label="색상">검은색</td>
+                    <td data-label="의미">미지의 것, 내면의 중요성, 어둠, 죽음, 신비로움</td>
+                </tr>
+                <tr>
+                    <td data-label="색상">회색</td>
+                    <td data-label="의미">무의식 상태, 중립성, 무기력, 우울함</td>
+                </tr>
+                <tr>
+                    <td data-label="색상">빨간색</td>
+                    <td data-label="의미">열정, 에너지, 사랑, 분노, 행동, 용기</td>
+                </tr>
+                <tr>
+                    <td data-label="색상">노란색</td>
+                    <td data-label="의미">의식, 삶의 기쁨, 희망, 지혜</td>
+                </tr>
+                <tr>
+                    <td data-label="색상">주황색</td>
+                    <td data-label="의미">활력, 따뜻함, 독단, 창의성</td>
+                </tr>
+                <tr>
+                    <td data-label="색상">파란색</td>
+                    <td data-label="의미">무관심, 냉담, 갈망, 우울함, 감상, 만족</td>
+                </tr>
+                <tr>
+                    <td data-label="색상">하늘색</td>
+                    <td data-label="의미">공기, 열린 하늘, 천국, 깨끗한 물, 순수</td>
+                </tr>
+                <tr>
+                    <td data-label="색상">녹색</td>
+                    <td data-label="의미">신선함, 젊음, 성장, 미성숙함, 자연</td>
+                </tr>
+                <tr>
+                    <td data-label="색상">짙은 녹색</td>
+                    <td data-label="의미">자연, 초목, 오래 지속됨, 안정성</td>
+                </tr>
+                <tr>
+                    <td data-label="색상">베이지색</td>
+                    <td data-label="의미">인간의 몸, 육체, 현실적 측면</td>
+                </tr>
+                <tr>
+                    <td data-label="색상">갈색</td>
+                    <td data-label="의미">현실적, 실제적인 것, 안정성, 신뢰성</td>
+                </tr>
+                <tr>
+                    <td data-label="색상">보라색</td>
+                    <td data-label="의미">경계에서의 경험, 신비로움, 영적 성장</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="symbols">
+        <h2>5. 상징 요소의 의미</h2>
+        
+        <p>색상 이외에도 타로카드에는 다양한 상징 요소들이 등장합니다. 이러한 요소들도 마찬가지로 문맥과 배경에 따라 다르게 해석될 수 있음을 주의해야 합니다.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>요소</th>
+                    <th>상징적 의미</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="요소">장미꽃</td>
+                    <td data-label="상징적 의미">열정, 욕망, 순수한 사랑, 균형과 조화</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">백합</td>
+                    <td data-label="상징적 의미">순수함, 도덕성, 영적 깨달음, 평화</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">석류</td>
+                    <td data-label="상징적 의미">풍요로움, 다산, 생명력, 신성한 여성성, 임신</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">사자</td>
+                    <td data-label="상징적 의미">용기, 힘, 본능적인 욕망, 내면의 열정</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">무한대 기호 (∞)</td>
+                    <td data-label="상징적 의미">무한한 가능성, 영원성, 끝없는 순환</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">산</td>
+                    <td data-label="상징적 의미">도전, 장애물, 목표, 영적 상승</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">강 또는 바다</td>
+                    <td data-label="상징적 의미">감정의 흐름, 무의식, 잠재의식, 삶의 여정</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">태양</td>
+                    <td data-label="상징적 의미">성공, 활력, 긍정적인 에너지, 명확성</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">달</td>
+                    <td data-label="상징적 의미">환상, 직관, 숨겨진 진실, 감정의 깊이</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">별</td>
+                    <td data-label="상징적 의미">희망, 영감, 영적 인도, 치유</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">나비</td>
+                    <td data-label="상징적 의미">변형, 변화, 영적 성장, 재생</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">열쇠</td>
+                    <td data-label="상징적 의미">지식, 비밀의 해답, 새로운 기회의 문</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">기둥</td>
+                    <td data-label="상징적 의미">이중성, 균형, 선택의 갈림길, 안정성</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">왕관</td>
+                    <td data-label="상징적 의미">권위, 성취, 영적 지혜, 통치권</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">지팡이 (완드)</td>
+                    <td data-label="상징적 의미">창의성, 열정, 행동, 영적 에너지</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">칼 (소드)</td>
+                    <td data-label="상징적 의미">이성, 결단력, 갈등, 진실</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">컵</td>
+                    <td data-label="상징적 의미">감정, 사랑, 관계, 직관</td>
+                </tr>
+                <tr>
+                    <td data-label="요소">펜타클 (동전)</td>
+                    <td data-label="상징적 의미">물질적 풍요, 현실 세계, 재정적 안정, 실용성</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="reference-links">
+        <h2>참고 자료</h2>
+        <p><strong>추가 학습을 위한 자료:</strong></p>
+        <ul>
+            <li>타로카드 78장 전체 해석 및 정역방향 해석 자료</li>
+            <li>수비학 기초 정리 자료</li>
+        </ul>
+        <p><em>더 깊이 있는 타로 학습을 위해서는 실제 카드와 함께 연습해보시기를 권장합니다.</em></p>
+    </section>
+
+  <footer>
+    <p>ⓒ 2025 Aiden Tarot Class</p>
+  </footer>
+</body>
+</html>
