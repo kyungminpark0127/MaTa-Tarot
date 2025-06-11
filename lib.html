@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서관</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+        /* 스크롤바 숨기기 */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        html {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fdfaf5;
+            color: #333;
+            max-width: 900px;
+            margin: auto;
+            padding: 1em;
+            line-height: 1.6;
+        }
+
+        header, footer {
+            text-align: center;
+            margin: 2em 0;
+        }
+
+        h1, h2 {
+            color: #4a148c;
+        }
+
+        nav {
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        nav a {
+            color: #6a1b9a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            margin: 0 0.5em;
+        }
+
+        nav a:hover {
+            color: #8e24aa;
+            text-decoration: underline;
+        }
+
+        .download-section {
+            background-color: #f3e5f5;
+            padding: 2em;
+            border-radius: 15px;
+            margin: 2em 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .file-item {
+            background-color: white;
+            border: 2px solid #e1bee7;
+            border-radius: 12px;
+            padding: 1.5em;
+            margin: 1em 0;
+            transition: all 0.3s ease;
+        }
+
+        .file-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            border-color: #8e24aa;
+        }
+
+        .file-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #4a148c;
+            margin-bottom: 0.5em;
+        }
+
+        .file-description {
+            color: #666;
+            margin-bottom: 1em;
+            font-size: 0.95em;
+        }
+
+        .file-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1em;
+        }
+
+        .file-meta {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+            color: white;
+            padding: 0.8em 2em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #4a148c, #6a1b9a);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .download-icon {
+            font-size: 1.1em;
+        }
+
+        /* 모바일 반응형 */
+        @media (max-width: 768px) {
+            body {
+                padding: 0.8em;
+                font-size: 0.9em;
+            }
+
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 0.5em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+                margin-bottom: 1em;
+            }
+
+            .download-section {
+                padding: 1em;
+                margin: 1.5em 0;
+            }
+
+            .file-item {
+                padding: 1em;
+                margin: 1em 0;
+            }
+
+            .file-title {
+                font-size: 1.1em;
+                margin-bottom: 0.5em;
+                word-break: keep-all;
+                line-height: 1.3;
+            }
+
+            .file-description {
+                font-size: 0.85em;
+                margin-bottom: 0.8em;
+                line-height: 1.4;
+            }
+
+            .file-info {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.8em;
+            }
+
+            .file-meta {
+                font-size: 0.8em;
+                text-align: center;
+                padding: 0.3em;
+            }
+
+            .download-btn {
+                text-align: center;
+                justify-content: center;
+                width: 100%;
+                padding: 1em 1.5em;
+                font-size: 1rem;
+                border-radius: 20px;
+                box-sizing: border-box;
+                min-height: 50px;
+                display: flex;
+                align-items: center;
+                gap: 0.5em;
+            }
+
+            .download-btn:hover {
+                transform: none;
+            }
+
+            .download-btn:active {
+                transform: scale(0.98);
+            }
+
+            nav {
+                margin-bottom: 1.5em;
+                font-size: 0;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 0.3em 0.15em;
+                padding: 1em 1.5em;
+                background-color: #f3e5f5;
+                border-radius: 12px;
+                text-align: center;
+                font-weight: 600;
+                color: #4a148c;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                font-size: 0.95rem;
+                min-width: 100px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                box-sizing: border-box;
+            }
+
+            nav a:hover {
+                background-color: #e1bee7;
+                color: #4a148c;
+                text-decoration: none;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            }
+        }
+
+        /* 매우 작은 모바일 (480px 이하) */
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5em;
+                font-size: 0.85em;
+            }
+
+            h1 {
+                font-size: 1.4em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .download-section {
+                padding: 0.8em;
+                margin: 1em 0;
+            }
+
+            .file-item {
+                padding: 0.8em;
+            }
+
+            .file-title {
+                font-size: 1em;
+            }
+
+            .file-description {
+                font-size: 0.8em;
+            }
+
+            .download-btn {
+                padding: 0.9em 1.2em;
+                font-size: 0.9rem;
+                min-height: 45px;
+            }
+
+            nav a {
+                margin: 0.25em 0.1em;
+                padding: 0.8em 1.2em;
+                font-size: 0.85rem;
+                min-width: 90px;
+            }
+        }
+
+        /* 터치 디바이스용 개선 */
+        @media (hover: none) and (pointer: coarse) {
+            .download-btn:hover {
+                transform: none;
+                background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+            }
+
+            .file-item:hover {
+                transform: none;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+
+            nav a:hover {
+                transform: none;
+                background-color: #f3e5f5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📁 전자책 도서관</h1>
+        <p>필요한 전자책을 다운로드하세요</p>
+    </header>
+
+    <nav>
+      <a href="index.html">홈</a>
+    </nav>
+
+    <section class="download-section">
+        <h2>📁 강의 교재</h2>
+        
+        <div class="file-item">
+            <div class="file-title">📄 타로 기초 가이드</div>
+            <div class="file-description">타로 기초에 대해 설명하고 이해하기 위한 가이드입니다.</div>
+            <div class="file-info">
+                <div class="file-meta">PDF • 0.44MB • 2023-06</div>
+                <a href="files/타로 기초 강의 - 박모란.pdf" download="타로기초가이드.pdf" class="download-btn">
+                    <span class="download-icon">⬇</span>
+                    다운로드
+                </a>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section class="download-section">
+        <h2>📁 강의 정리본</h2>
+        
+        <div class="file-item">
+            <div class="file-title">📄 타로 카드 기초 교재</div>
+            <div class="file-description">기본 개념 및 설명이 포함되어 있습니다.</div>
+            <div class="file-info">
+                <div class="file-meta">PDF • 1.4MB • 2025-02</div>
+                <a href="files/타로카드 기초 교재.pdf" download="기초교제.pdf" class="download-btn">
+                    <span class="download-icon">⬇</span>
+                    다운로드
+                </a>
+            </div>
+        </div>
+
+        <div class="file-item">
+            <div class="file-title">📄 타로카드 색깔과 요소 정리본</div>
+            <div class="file-description">타로카드와 완련된 색과 요소들에 대한 정리본입니다.</div>
+            <div class="file-info">
+                <div class="file-meta">PDF • 15.8MB • 2025-06</div>
+                <a href="files/마 · 타 타로 강의-색깔과 요소 정리본.pdf" download="색과요소.pdf" class="download-btn">
+                    <span class="download-icon">⬇</span>
+                    다운로드
+                </a>
+            </div>
+        </div>
+    </section>
+
+  <footer>
+    <p>ⓒ 2025 Aiden Tarot Class</p>
+  </footer>
+
+    <script>
+        // 다운로드 클릭 시 간단한 피드백
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<span class="download-icon">✅</span> 다운로드 중...';
+                this.style.backgroundColor = '#4caf50';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.style.backgroundColor = '';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
